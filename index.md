@@ -69,7 +69,7 @@ res.1 <- cluster.doc(test.dat, sample = 1, vaf = 2,
 
 <center>
 
-![VAF distribution](https://github.com/Subhayan18/CRUST/blob/master/source/test.dat.1.png)
+![VAF distribution](source/test.dat.1.png)
 
 ![BIC changes](https://github.com/Subhayan18/CloneStrat/blob/master/source/test.dat.2.png)
 
