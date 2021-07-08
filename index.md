@@ -51,7 +51,7 @@ with options to modify solutions.
 ?test.dat
 head(test.dat)
 
-res.1 <- cluster.doc(test.dat, sample = 1, vaf = 2, 
+r.es <- cluster.doc(test.dat, sample = 1, vaf = 2, 
          optimization.method = 'GMM', clustering.method = 'hkm')
 
 ## example user input:
@@ -138,12 +138,13 @@ sample.name <- c("sample1","sample2","sample3")
 CS.dat <- mutect2.qc(WES,sample.name)
 ```
 
-**A test** is provided to check the goodness of the cluster fit. This will indicate existence of outliers.
-```{r, eval=FALSE, echo=TRUE}
-CS.test<-T.goodness.test(es)$rej
+**A test** is provided to check the goodness of the cluster fit. This will indicate existence of outliers. For this the output to the *cluster.doc* or *cluster.doubt* is used as input.
 
-## The variants that can only belong to one clone is shown
+```{r}
+## Possible outlying variants are shown
+T.goodness.test(r.es)$rej
 ```
+
 ## Coming soon
 Functions to import sequencing summary and copy number data from popular third party tools.
 
