@@ -46,7 +46,7 @@ Instead of adjusting the VAFs corresponding to their respective segmental copy n
 a intuitive solution to the problem. It does not uses this intuitive solution to infer cluster separation rather builds upon this and later in the analyses provides the user 
 with options to modify solutions.
 
-```{r, eval=FALSE, echo=TRUE}
+```{r}
 ## let's have a look at the data itself
 ?test.dat
 head(test.dat)
