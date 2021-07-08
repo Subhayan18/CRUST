@@ -106,8 +106,8 @@ We saw how if segmental copynumber data is unavailable to the user the results c
 
 At first the relative coverage estimates are corrected for variation in G/C neucleotide content:
 
-![](/source/AC.1.jpg){:width="50%" style="display: inline-block; margin: 0 auto"}
-![](/source/AC.2.jpg){:width="50%" style="display: inline-block; margin: 0 auto"}
+![](/source/AC.1.jpg){:width="45%" style="display: inline-block; margin: 0 auto"}
+![](/source/AC.2.jpg){:width="45%" style="display: inline-block; margin: 0 auto"}
 
 **Figure 9** Effect of scaling with GC contenton the relative coverages
 
