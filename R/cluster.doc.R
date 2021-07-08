@@ -25,10 +25,10 @@
 #' frequency distributions present in the data. This is a subjective estimate that the program later uses for cluster assignment.
 #' @details Out of the two methods used for cluster optimization, \emph{GMM} stands for \emph{Gaussian Mixed Models} whereas \emph{bootstrap},
 #' as the name suggests perform \emph{bootstrap} resampling of the VAFs in 50 repetitions with 20 runs each to find the most stable parameter
-#' for clustering. \emph{GMM} outputs the optimization curve with \code{BIC} or \emph{Bayesian Information Criterion} against number of
-#' clusters chosen in the \code{X-axis} where \emph{bootstrap} shows the \code{Smin} statistics instead in the \code{Y-axis}. In both cases the
-#' statistics are to be interpreted as proxies for the \emph{entropy} of the system. The maximum entropy is likely to indicate the most stable
-#' solution.
+#' for clustering. \emph{GMM} outputs the optimization curve with \code{BIC} and \emph{AIC} against number of clusters chosen in the
+#' \code{X-axis} where \emph{bootstrap} shows the \code{Smin} statistics instead in the \code{Y-axis}. Where as \code{gap}
+#' calculates the gap statistics for each clustering. In all cases the statistics are to be interpreted as proxies for the \emph{entropy} of the
+#' system. The maximum entropy is likely to indicate the most stable solution.
 #' @details \code{clustering.method} gives the user three choices:
 #' @details \code{HKM} is \emph{Heierarchical K-means clustering} which uses heierarchical clustering first to determine the cluster centers
 #' that are subsequently used as the starting point for the K-means clustering.
@@ -96,9 +96,10 @@ cluster.doc <- function (data = NULL, sample = NULL, vaf = NULL, allele.comp = N
     d_clust <- Mclust(as.matrix(x[,2]), G=2:10)##Deterministic clustering with GMM based density estimate
     m.best <- dim(d_clust$z)[2]                       ##Optimum number of clusters
     cat("Predicted optimal number of clusters:", m.best, "\n")
-    print("Plotting BIC curve")
+    print("Plotting Information curve")
     suppressWarnings(print(plot.bic(d_clust$BIC)))
-  } else if (optimization.method == 'bootstrap') {
+  }
+  else if (optimization.method == 'bootstrap') {
     print("Optimizing number of clusters with Bootstrapping")
     cat("Bootstrapping is like a box of chocolates. You never know what you're gonna get \n")
     boot.k<-k.select(x[,2], range = 2:10, B = 50, r = 20, threshold = 0.75, scheme_2 = TRUE)
@@ -106,7 +107,17 @@ cluster.doc <- function (data = NULL, sample = NULL, vaf = NULL, allele.comp = N
     cat("Predicted optimal number of clusters:", m.best, "\n")
     print("Plotting Smin curve")
     suppressWarnings(print(plot.bic(boot.k)))
-  } else stop("Is that a real optimization method ? .... I felt a great disturbance in the source")
+  }
+  else if (optimization.method == 'gap') {
+    print("Optimizing number of clusters with Gap statistics")
+    cat("Bootstrapping is like a box of chocolates. You never know what you're gonna get \n")
+    gskmn <- clusGap(cbind(x[,2],x[,2]), FUN = kmeans, nstart = 20, K.max = 10, B = 50)
+    m.best <- which(gskmn[["Tab"]][,3]==max(gskmn[["Tab"]][,3]))
+    cat("Predicted optimal number of clusters:", m.best, "\n")
+    print("Plotting Gap Statistics")
+    suppressWarnings(print(plot(gskmn, main = "Gap statistics")))
+  }
+  else stop("Is that a real optimization method ? .... I felt a great disturbance in the source")
 
   ######################################################################################################
   ############################ Getting User input about the suggested prediction #######################

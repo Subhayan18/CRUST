@@ -85,10 +85,10 @@ frequency distributions present in the data. This is a subjective estimate that 
 
 Out of the two methods used for cluster optimization, \emph{GMM} stands for \emph{Gaussian Mixed Models} whereas \emph{bootstrap},
 as the name suggests perform \emph{bootstrap} resampling of the VAFs in 50 repetitions with 20 runs each to find the most stable parameter
-for clustering. \emph{GMM} outputs the optimization curve with \code{BIC} or \emph{Bayesian Information Criterion} against number of
-clusters chosen in the \code{X-axis} where \emph{bootstrap} shows the \code{Smin} statistics instead in the \code{Y-axis}. In both cases the
-statistics are to be interpreted as proxies for the \emph{entropy} of the system. The maximum entropy is likely to indicate the most stable
-solution.
+for clustering. \emph{GMM} outputs the optimization curve with \code{BIC} and \emph{AIC} against number of clusters chosen in the
+\code{X-axis} where \emph{bootstrap} shows the \code{Smin} statistics instead in the \code{Y-axis}. Where as \code{gap}
+calculates the gap statistics for each clustering. In all cases the statistics are to be interpreted as proxies for the \emph{entropy} of the
+system. The maximum entropy is likely to indicate the most stable solution.
 
 \code{clustering.method} gives the user three choices:
 

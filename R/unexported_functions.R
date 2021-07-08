@@ -816,8 +816,11 @@ plot.bic<-function(tmp){
   }
   else{
     cluster<-as.numeric(rep(rownames(tmp),2))
-    BIC<-c(tmp[,1],tmp[,2])
-    group<-c(rep('Expectation',nrow(tmp)),rep('Variance',nrow(tmp)))
+    # BIC<-c(tmp[,1],tmp[,2])
+    # group<-c(rep('Expectation',nrow(tmp)),rep('Variance',nrow(tmp)))BIC<-tmp[,1]
+    ## INCLUSION OF AIC
+    BIC<-c(BIC,BIC+4*(log(320)-4))
+    group<-c(rep('BIC',nrow(tmp)),rep('AIC',nrow(tmp)))
     tmp<-as.data.frame(BIC)
     tmp$'Cluster Numbers'<-cluster
     tmp$metric<-group
@@ -830,9 +833,12 @@ plot.bic<-function(tmp){
       theme(legend.position = "bottom",
             legend.direction = "horizontal")+
       geom_line(size=1.5, show.legend = F)+
-      labs(title="Changes in BIC as number of clusters increases",
-           y="Bayesian Information Criteria (BIC)",
-           metric="Evaluation Metric")+
+      # labs(title="Changes in BIC as number of clusters increases",
+      #      y="Bayesian Information Criteria (BIC)",
+      #      metric="Evaluation Metric")+
+      labs(title="Changes in AIC and BIC as number of clusters increases",
+        y="Information estimate",
+        metric="Evaluation Metric")+
       scale_x_continuous(breaks=cluster)
   }
 }

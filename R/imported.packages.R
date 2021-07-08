@@ -4,6 +4,7 @@
 #' @import ggpubr
 #' @import scales
 #' @import tidyr
+#' @import cluster
 #' @import fpc
 #' @import falcon
 #' @import sequenza

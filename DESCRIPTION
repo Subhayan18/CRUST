@@ -9,22 +9,12 @@ BugReports: https://github.com/Subhayan18/CRUST/issues/
 License: GPL-3
 Encoding: UTF-8
 LazyData: TRUE
-Imports: factoextra,
-         FactoMineR,
-         bootcluster,
-         falcon,
-         fpc,
-         ggpubr,
-         mclust,
-         RcppArmadillo,
-         readxl,
-         rlang,
-         scales,
-         sequenza,
-         tidyr,
-         vcfR,
-         dplyr,
-         ggplot2
+Imports: factoextra, FactoMineR, bootcluster, cluster, falcon, fpc,
+        ggpubr, mclust, RcppArmadillo, readxl, rlang, scales, sequenza,
+        tidyr, vcfR, dplyr, ggplot2
 Suggests: copynumber, tidyverse
 NeedsCompilation: no
 RoxygenNote: 7.1.1
+Packaged: 2021-06-11 08:53:29 UTC; su1252ch
+Author: Subhayan Chattopadhyay [aut, cre, ctb]
+Maintainer: Subhayan Chattopadhyay <mailmesubhayan@gmail.com>
