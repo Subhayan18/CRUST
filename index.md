@@ -1,47 +1,56 @@
-# CRUST
-A package for scaled and allelic imbalance adjusted clonal deconvolution of NGS data.
+This package is created to offer a consolidated tool for clonal deconvolution while using bulk sequencing data when a tumor is multiregionally or 
+multi-temporally sampled. The package addresses several shortcomings while subclonally reconstructing several samples together that show up quite often 
+due to either sample quality, processing, sequencing or inferential artifacts.
 
-## Installation instructions
-
-
-```{r, eval=FALSE, echo=TRUE}
-install.packages(c("mclust","fpc","sequenza","vcfR","bootcluster","devtools",
-                   "factoextra","FactoMineR","RcppArmadillo","installr","ggplot2","falcon"))
-
-if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
-BiocManager::install("copynumber")
-```
-
-
-If no error message has popped up so far we are now ready to install the package. Best practice would be to change your working directory to the directory where all the downloaded files are saved. Then just remove *~PATH* part from the code below. OR, another way would be to replace the *~PATH* in the following line with the directory address where the package zip file is saved.
-
-*Note* Here on out it is assumed that the working directory has been changed to where the downloaded files are. Hence no additional path is defined.
+## Installation
+*CRUST* borrows clustering programs and other supporting facades from several other dependencies. Most of which has a continuing support from *CRAN*. Although more often than not one might find unable to import one or more dependencies due to lack of support from its maintainer. If such consern arises please refer to the package manual to 
+find a list of direct and suggested dependencies which may help to resolve the issue.
 
 ```{r, eval=FALSE, echo=TRUE}
-install.packages("~PATH/CloneStrat_0.1.5.tar.gz", repos = NULL, type = "source")
+install.packages("remotes")
+remotes::install_github("ShixiangWang/copynumber")
+remotes::install_github("Subhayan18/CRUST")
 ```
 
-We can now load the package in global environment.
+If no error message has popped up, we are now ready to load the package in global environment.
 
 ```{r}
-require(CloneStrat)
+require(CRUST)
 ```
 
 ## Preliminary usage
 
-Let's take a look at the imaginary whole exome sequencing data built into the package.
+*CRUST* comes with one simulated tetraploid tumor data that has eight different samples. This is mostly used for demonstration purpose. 
+We will use this data to perform our first clonal deconvolution. A set of example user input is given below but there are lot of other choices 
+in methods and inputs that can be provided.
+
+The *cluster.doc* function needs to be called for the analysis which requires the user to declare the colum numbers of the sample names, variant allele frequencies 
+and among other options, a method to select the optimum number of clusters and a method to perform clustering. The last two options have a default input if left 
+undeclared.
+
+As the variant allele frequency or VAF is the currency to any deconvolution program, it is paramount to ensure its integrity prior to analysis. A major concern 
+is thus to adjust the VAFs according to the segmental copy numbers of each sample. To this end CRUST only analyzes segments that have same allelic makeup across 
+samples. For example, in our imaginary tetraploid tumor the allelic makeup can assume the following states:
+
+0+4 : 0 mutatant and 4 wildtypes
+
+1+3 : 1 mutatant and 3 wildtypes
+
+2+2 : 2 mutatant and 2 wildtypes
+
+3+1 : 3 mutatant and 1 wildtypes
+
+4+0 : 4 mutatant and 0 wildtypes
+
+Instead of adjusting the VAFs corresponding to their respective segmental copy numbers *CRUST* analyzes each distinct allelic composition in separate runs. The user is prompted to declare this allelic make up in the beginning of each run. In addition to this *CRUST* also asks the user to make a visual inspection of the VAF dot plot and provide 
+a intuitive solution to the problem. It does not uses this intuitive solution to infer cluster separation rather builds upon this and later in the analyses provides the user 
+with options to modify solutions.
 
 ```{r, eval=FALSE, echo=TRUE}
-?test.dat
-
 ## let's have a look at the data itself
+?test.dat
 head(test.dat)
-```
 
-We will use this data to perform our first clonal deconvolution. A set of example user input is given below but there are lot of other choices in methods and inputs that can be provided.
-
-```{r, eval=FALSE, echo=TRUE}
 res.1 <- cluster.doc(test.dat, sample = 1, vaf = 2, 
                    optimization.method = 'GMM', clustering.method = 'hkm')
 
