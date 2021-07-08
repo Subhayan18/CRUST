@@ -87,8 +87,8 @@ Case in point: a paediatric neuroblastoma tumor is sampled seven times over the 
 
 But this will be a contentious inference where all variants in the primary samples are predicted to be subclonal and some of them are apparently jumping ship to fixate clonally in the metastatic samples. The analysis went wrong because we did not take into account the varied purity of the samples. *CRUST* can normalize this VAFs according to their respective purity which if we were to deconvolve will result in something much closer to the truth:
 
-![](/source/ES.3.jpg){:width="50%" style="display: inline-block; margin: 0 auto"} 
-![](/source/ES.4.1.jpg){:width="50%" style="display: inline-block; margin: 0 auto"} 
+![](/source/ES.3.jpg){:width="49%" style="display: inline-block; margin: 0 auto"} 
+![](/source/ES.4.1.jpg){:width="49%" style="display: inline-block; margin: 0 auto"} 
 
 ## Subjective post-hoc input
 
@@ -106,8 +106,8 @@ We saw how if segmental copynumber data is unavailable to the user the results c
 
 At first the relative coverage estimates are corrected for variation in G/C neucleotide content:
 
-![](/source/AC.1.jpg){:width="45%" style="display: inline-block; margin: 0 auto"}
-![](/source/AC.2.jpg){:width="45%" style="display: inline-block; margin: 0 auto"}
+![](/source/AC.1.jpg){:width="49%" style="display: inline-block; margin: 0 auto"}
+![](/source/AC.2.jpg){:width="49%" style="display: inline-block; margin: 0 auto"}
 
 **Figure 9** Effect of scaling with GC contenton the relative coverages
 
