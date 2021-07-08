@@ -55,20 +55,20 @@ res.1 <- cluster.doc(test.dat, sample = 1, vaf = 2,
          optimization.method = 'GMM', clustering.method = 'hkm')
 
 ## example user input:
-## suspected chromosomal segmentation profile of the sample: 2 + 2
+## suspected chromosomal segmentation profile of the sample: 3+1
 ## How many clonal VAF clouds do you think are present: 2
 ## How many sub-clonal VAF clouds do you think are present: 2
 ## Would you like to see my suggestion instead? (yes/no): no
 ```
 
-![](/source/test.dat.1.png){:width="40%" style="display: block; margin: 0 auto"}   
-**Figure 1** shows how the distribution of variant allele frequencies look for the 8 simulated samples. Depending on the structure of the spread it is concievable that the allelic segmentation is a balanced 2 + 2
+![](/source/test.dat.1.png){:width="60%" style="display: block; margin: 0 auto"}   
+**Figure 1** shows how the distribution of variant allele frequencies look for the 8 simulated samples. It is clear that two different clouds (lack  of a better word) of VAFs exist centering approximately around 0.25 and 0.75. Depending on this structure of the spread it is concievable that the allelic segmentation is a tetraploid 3+1 with each cloud harboring one clonal and one subclonal clusters.
 
-![](/source/test.dat.2.png){:width="40%" style="display: block; margin: 0 auto"}  
-**Figure 2** shows the changes in *Bayesian Information criteria* (BIC) estimated based on expectation and variance of the clustering fit.
+![](/source/test.dat.2.png){:width="60%" style="display: block; margin: 0 auto"}  
+**Figure 2** shows the changes in *Bayesian Information criteria* (BIC) and *Akaike Information criterion* (AIC) estimated based on the number of clusters fitted.
 
 
-![](/source/test.dat.3.png){:width="40%" style="display: block; margin: 0 auto"}  
+![](/source/test.dat.3.png){:width="60%" style="display: block; margin: 0 auto"}  
 **Figure 3** shows the clustered samples here depict the distribution of clonal and sub-clonal variants.
 
 
