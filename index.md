@@ -109,8 +109,8 @@ We saw how if segmental copynumber data is unavailable to the user the results c
 
 At first the reads are corrected for variation in G/C neucleotide content:
 
-![](/source/AC.1.jpg){:width="60%" style="display: block; margin: -1 auto"}
-![](/source/AC.2.jpg){:width="60%" style="display: block; margin: 0 auto"}
+![](/source/AC.1.jpg){:width="30%" style="display: block; margin: -1 auto"}
+![](/source/AC.2.jpg){:width="30%" style="display: block; margin: 0 auto"}
 
 ```{r, eval=FALSE, echo=TRUE}
 ## A user provided .vcf file must contain data from one tumor sample
