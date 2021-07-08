@@ -6,7 +6,7 @@ due to either sample quality, processing, sequencing or inferential artifacts.
 *CRUST* borrows clustering programs and other supporting facades from several other dependencies. Most of which has a continuing support from *CRAN*. Although more often than not one might find unable to import one or more dependencies due to lack of support from its maintainer. If such consern arises please refer to the package manual to 
 find a list of direct and suggested dependencies which may help to resolve the issue.
 
-```{r, eval=FALSE, echo=TRUE}
+```{r}
 install.packages("remotes")
 remotes::install_github("ShixiangWang/copynumber")
 remotes::install_github("Subhayan18/CRUST")
