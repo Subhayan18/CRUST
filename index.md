@@ -133,7 +133,7 @@ Along with the copy number estimates *CRUST* also provides estimates of allelic 
 
 ## A test data is provided with the package
 
-WES <- readxl::read_table2("WES.tsv")
+WES <- readr::read_table2("WES.tsv")
 sample.name <- c("sample1","sample2","sample3")
 CS.dat <- mutect2.qc(WES,sample.name)
 ```
