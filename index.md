@@ -119,7 +119,7 @@ Next we get estimates for each chromosome separately that includes segmental all
 
 Along with the copy number estimates *CRUST* also provides estimates of allelic imbalances. This plotted against negative log transformed relative coverage values can isolate variants chromosomal segments according to thei allelic makeup (example: 0n+2n / 1n+1n / 2n+0n for diploid sample). This plot can aid users in determining the plausible clonality status is is shown [here](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2011-12-10-r108)
 
-![](/source/AC.4.jpg){:width="60%" style="display: inline-block; margin: 0 auto"}
+![](/source/AC.4.jpg){:width="60%" style="display: block; margin: 0 auto"}
 
 ## Auxiliary functions
 
