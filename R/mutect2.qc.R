@@ -5,7 +5,7 @@
 #' @param data A \code{dataframe} of the Mutect2 output
 #' @param sample.name a \code{vector} of sample names or IDs
 #' @return A transformed \code{dataframe} usable in \emph{CloneStrat} that represents data on each variant of each sample in rows
-#' @examples \donttest{mutect2.qc(data,sample.name=c("sample_1","sample_2"))}
+#' @examples \donttest{#mutect2.qc(data,sample.name=c("sample_1","sample_2"))}
 #' @export
 mutect2.qc<-function(data,sample.name){
   if (missing(sample.name) | typeof(sample.name)!='character') stop ("missing sample names")

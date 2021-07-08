@@ -4,10 +4,10 @@
 \alias{mutect2.qc}
 \title{Quality Control on Mutect2 output}
 \usage{
-mutect2.qc(WES, sample.name)
+mutect2.qc(data, sample.name)
 }
 \arguments{
-\item{WES}{A \code{dataframe} of the Mutect2 output}
+\item{data}{A \code{dataframe} of the Mutect2 output}
 
 \item{sample.name}{a \code{vector} of sample names or IDs}
 }
@@ -15,9 +15,9 @@ mutect2.qc(WES, sample.name)
 A transformed \code{dataframe} usable in \emph{CloneStrat} that represents data on each variant of each sample in rows
 }
 \description{
-A quality control (QC) and transformation on the WES output from the Mutect2 variant caller. This re-organizes the data in a way that is
+A quality control (QC) and transformation on the sequencing statistics output from the Mutect2 variant caller. This re-organizes the data in a way that is
 friendlier for using in \emph{CloneStrat}
 }
 \examples{
-\donttest{#res<-mutect2.qc(WES,sample.name)}
+\donttest{#mutect2.qc(data,sample.name=c("sample_1","sample_2"))}
 }
