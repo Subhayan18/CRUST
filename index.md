@@ -67,11 +67,11 @@ res.1 <- cluster.doc(test.dat, sample = 1, vaf = 2,
 
 **Figure 3** shows the clustered samples here depict the distribution of clonal and sub-clonal variants.
 
-![](/test.dat.1.png)
+![](/source/test.dat.1.png)
 
-![](https://github.com/Subhayan18/CRUST/blob/master/source/test.dat.2.png)
+![](/source/test.dat.2.png)
 
-<p><img alt="" src="https://github.com/Subhayan18/CloneStrat/blob/master/source/test.dat.3.png" /></p>
+![](/source/test.dat.3.png)
 
 ## Scaling
 
