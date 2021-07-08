@@ -61,13 +61,16 @@ res.1 <- cluster.doc(test.dat, sample = 1, vaf = 2,
 ## Would you like to see my suggestion instead? (yes/no): no
 ```
 
-![](/source/test.dat.1.png){:width="60%" style="display: block; margin: 0 auto"}   
+![](/source/test.dat.1.png){:width="60%" style="display: block; margin: 0 auto"}
+
 **Figure 1** shows how the distribution of variant allele frequencies look for the 8 simulated samples. It is clear that two different clouds (lack  of a better word) of VAFs exist centering approximately around 0.25 and 0.75. Depending on this structure of the spread it is concievable that the allelic segmentation is a tetraploid 3+1 with each cloud harboring one clonal and one subclonal clusters.
 
-![](/source/test.dat.2.png){:width="60%" style="display: block; margin: 0 auto"}  
+![](/source/test.dat.2.png){:width="60%" style="display: block; margin: 0 auto"}
+
 **Figure 2** shows the changes in *Bayesian Information criteria* (BIC) and *Akaike Information criterion* (AIC) estimated based on the number of clusters fitted.
 
 ![](/source/test.dat.3.png){:width="60%" style="display: block; margin: 0 auto"}  
+
 **Figure 3** shows the clustered samples here depict the distribution of clonal and sub-clonal variants.
 
 ## Scaling
@@ -77,6 +80,7 @@ Quite often the sequencing would not give as clear a picture as is seen here wit
 Case in point: a paediatric neuroblastoma tumor is sampled seven times over the duration of the disease. At presentation when biopsy was collected, the tumor tissue had a lot of normal cells nearby that were also sampled. Later the disease metastasized which was bipsied with a much higher content of the metastatic cells.
 
 ![](/source/ES.1.jpg){:width="60%" style="display: block; margin: 0 auto"}  
+
 **Figure 4** shows the seven tumor samples biopsied from the patient. sample_1 to 3 are from primary tumor and sample_4 to 7 are from the metastasis. Notice the changing dispersion of the VAFs. The primary samples are collected at around 30% purity whereas the metastatic samples were collected during portmortem resulting in a much higher purity of about 90%. If we were to subclonally deconstruct this tumor, the output would look like this:
 
 ![](/source/ES.2.jpg){:width="60%" style="display: block; margin: 0 auto"} 
@@ -88,6 +92,16 @@ But this will be a contentious inference where all variants in the primary sampl
 Now if we were to deconvolve this scaled VAFs, we will get a result that is much closer to the truth:
 
 ![](/source/ES.4.1.jpg){:width="60%" style="display: block; margin: 0 auto"} 
+
+## Subjective post-hoc input
+
+*CRUST* also allows user to re-analyze specific samples based on a brute force suggestion provided by a user. Usually this function would not be needed if allelic compositions are all same for the variants analyzed. But knowing the cost and scope of bulk array sequencing, it is not unconcievable that from time to time allele specific segmental copy number data may not be available to a user. In such cases, if one harbors uncharacteristically strong suspecion that one or more samples are in altered copy number state, the *cluster.doubt* function provided a unique leeway to remeday that by deconvolving said samples according a user defined clustering input.
+
+***Advisory:* We recommend not using this function unless you know exactly what you are doing.
+
+![](/source/ES.5..jpg){:width="60%" style="display: block; margin: 0 auto"}
+
+**Figure 8** *cluster.doubt* is invoked to subjectively deconvolve the last two metastatic samples into 4 clusters (2 clones and 2 subclones).
 
 ## Estimation of allelic composition
 
