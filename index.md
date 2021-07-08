@@ -107,10 +107,13 @@ Now if we were to deconvolve this scaled VAFs, we will get a result that is much
 
 We saw how if segmental copynumber data is unavailable to the user the results can be modified to reflect suspected alterations in the copynumber profiles but this can be also rigorously estimated with *CRUST*. If the sequencing summaries (read depth summaries) for the constitutional genome is available, the *AlleleComp* function estimates the segmental copynumber for each sample and each chromosome separately. For this the program first starts by reading in *.vcf* files of a single sample. Multiple samples can also be dynamically read, a small function for this is provided [auxiliary scripts](https://github.com/Subhayan18/CRUST/blob/ver_1.1.0/auxiliary%20scripts/read_vcfs_fromDIR.R) 
 
-At first the reads are corrected for variation in G/C neucleotide content:
+At first the relative coverage estimates are corrected for variation in G/C neucleotide content:
 
-![](/source/AC.1.jpg){:width="30%" style="display: block; margin: -1 auto"}
-![](/source/AC.2.jpg){:width="30%" style="display: block; margin: 0 auto"}
+![](/source/AC.1.jpg){:width="30%" style="display: inline-block; margin: 0 auto"}
+![](/source/AC.2.jpg){:width="30%" style="display: inline-block; margin: 0 auto"}
+
+**Figure 9** Unscaled relative coverage estimates
+**Figure 10** Scaled relative coverage estimates
 
 ```{r, eval=FALSE, echo=TRUE}
 ## A user provided .vcf file must contain data from one tumor sample
