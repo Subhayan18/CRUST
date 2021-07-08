@@ -69,11 +69,11 @@ res.1 <- cluster.doc(test.dat, sample = 1, vaf = 2,
 
 <center>
 
-<img src="https://github.com/Subhayan18/CRUST/blob/1b01a6902fdb23b8f4378be52e77c60f4bed760a/test.dat.1.png" />
+![](https://github.com/Subhayan18/CRUST/blob/gh-pages/test.dat.1.png)
 
-![BIC changes](https://github.com/Subhayan18/CloneStrat/blob/master/source/test.dat.2.png)
+![](https://github.com/Subhayan18/CRUST/blob/master/source/test.dat.2.png)
 
-![Clonal deconvolution](https://github.com/Subhayan18/CloneStrat/blob/master/source/test.dat.3.png)
+<p><img alt="" src="https://github.com/Subhayan18/CloneStrat/blob/master/source/test.dat.3.png" /></p>
 
 </center>
 
