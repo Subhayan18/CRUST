@@ -64,7 +64,9 @@ res.1 <- cluster.doc(test.dat, sample = 1, vaf = 2,
 ![](/source/test.dat.1.png){:height="300px" width="300px"}  
 **Figure 1** shows how the distribution of variant allele frequencies look for the 8 simulated samples. Depending on the structure of the spread it is concievable that the allelic segmentation is a balanced 2 + 2
 
-![](/source/test.dat.2.png){:height="300px" width="300px"}  
+![](/source/test.dat.2.png){:height="300px" width="300px";
+  display:block;
+  margin: 0 auto;}  
 **Figure 2** shows the changes in *Bayesian Information criteria* (BIC) estimated based on expectation and variance of the clustering fit.
 
 
