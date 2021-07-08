@@ -119,22 +119,22 @@ Next we get estimates for each chromosome separately that includes segmental all
 
 Along with the copy number estimates *CRUST* also provides estimates of allelic imbalances. This plotted against negative log transformed relative coverage values can isolate variants chromosomal segments according to thei allelic makeup (example: 0n+2n / 1n+1n / 2n+0n for diploid sample). This plot can aid users in determining the plausible clonality status is is shown [here](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2011-12-10-r108)
 
-![](/source/AC.4.jpg){:width="100%" style="display: inline-block; margin: 0 auto"}
+![](/source/AC.4.jpg){:width="60%" style="display: inline-block; margin: 0 auto"}
 
 ## Auxiliary functions
 
-**Mutect2** is a popular variant caller that can be used to obtain quality controlled variant calls. Those calls can be tabulated with the **GATK** extension [**VariantsToTable**](https://gatk.broadinstitute.org/hc/en-us/articles/360042476292-VariantsToTable). **CloneStrat** offers an extension that can convert such an output to a data file compatible with the internal functions described.
+**Mutect2** is a popular variant caller that can be used to obtain quality controlled variant calls. Those calls can be tabulated with the **GATK** extension [**VariantsToTable**](https://gatk.broadinstitute.org/hc/en-us/articles/360042476292-VariantsToTable). *CRUST* includes the function *mutect2.qc* that can convert such an output to a data file compatible with the internal functions. 
 
-```{r, eval=TRUE, echo=TRUE}
+```{r}
 ## Example whole exome seq data is provided in this repository
 ## Let's query the function to be used:
 
 ?mutect2.qc
 
-## Time to see it in action
+## A test data is provided with the package
 
-WES <- readxl::read_excel("WES.xlsx")
-sample.name <- c("X1","X2","X3","X4","X5")
+WES <- readxl::read_table2("WES.tsv")
+sample.name <- c("sample1","sample2","sample3")
 CS.dat <- mutect2.qc(WES,sample.name)
 ```
 
@@ -144,9 +144,7 @@ CS.test<-T.goodness.test(es)$rej
 
 ## The variants that can only belong to one clone is shown
 ```
-### Coming soon
+## Coming soon
+Functions to import sequencing summary and copy number data from popular third party tools.
 
-Functions to plot copy number estimation and figure out allelic composition. I am also testing a new method for estimating copy numbers which gives user more freedom to tweak.
-
-More features will be added gradually. If you'd like to see a specific feature incorporated in `CloneStrat`, send me 
-a request [here](https://htmlpreview.github.io/?https://github.com/Subhayan18/CloneStrat/blob/master/footer.html)
+More features will be added gradually. If you'd like to see a specific feature incorporated in `CRUST` consider sending a request [here](https://htmlpreview.github.io/?https://github.com/Subhayan18/CloneStrat/blob/master/footer.html)
