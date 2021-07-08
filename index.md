@@ -67,7 +67,7 @@ res.1 <- cluster.doc(test.dat, sample = 1, vaf = 2,
 
 **Figure 3** shows the clustered samples here depict the distribution of clonal and sub-clonal variants.
 
-![](https://github.com/Subhayan18/CRUST/blob/gh-pages/test.dat.1.png)
+![](/test.dat.1.png)
 
 ![](https://github.com/Subhayan18/CRUST/blob/master/source/test.dat.2.png)
 
