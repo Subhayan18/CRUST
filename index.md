@@ -99,7 +99,7 @@ Now if we were to deconvolve this scaled VAFs, we will get a result that is much
 
 ***Advisory:* We recommend not using this function unless you know exactly what you are doing.
 
-![](/source/ES.5..jpg){:width="60%" style="display: block; margin: 0 auto"}
+![](/source/ES.5.1.jpg){:width="60%" style="display: block; margin: 0 auto"}
 
 **Figure 8** *cluster.doubt* is invoked to subjectively deconvolve the last two metastatic samples into 4 clusters (2 clones and 2 subclones).
 
