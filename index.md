@@ -52,10 +52,10 @@ with options to modify solutions.
 head(test.dat)
 
 res.1 <- cluster.doc(test.dat, sample = 1, vaf = 2, 
-                   optimization.method = 'GMM', clustering.method = 'hkm')
+         optimization.method = 'GMM', clustering.method = 'hkm')
 
 ## example user input:
-## What is the suspected chromosomal segmentation profile of the sample: 2 + 2
+## suspected chromosomal segmentation profile of the sample: 2 + 2
 ## How many clonal VAF clouds do you think are present: 2
 ## How many sub-clonal VAF clouds do you think are present: 2
 ## Would you like to see my suggestion instead? (yes/no): no
@@ -69,7 +69,7 @@ res.1 <- cluster.doc(test.dat, sample = 1, vaf = 2,
 
 <center>
 
-![VAF distribution](https://github.com/Subhayan18/CloneStrat/blob/master/source/test.dat.1.png)
+![VAF distribution](https://github.com/Subhayan18/CRUST/blob/master/source/test.dat.1.png)
 
 ![BIC changes](https://github.com/Subhayan18/CloneStrat/blob/master/source/test.dat.2.png)
 
