@@ -77,16 +77,17 @@ Quite often the sequencing would not give as clear a picture as is seen here wit
 Case in point: a paediatric neuroblastoma tumor is sampled seven times over the duration of the disease. At presentation when biopsy was collected, the tumor tissue had a lot of normal cells nearby that were also sampled. Later the disease metastasized which was bipsied with a much higher content of the metastatic cells.
 
 ![](/source/ES.1.jpg){:width="60%" style="display: block; margin: 0 auto"}  
-**Figure 4** shows the seven tumor samples biopsied from the patient. sample_1 to 3 are from primary tumor and sample_4 to 7 are from the metastasis. Notice the changing dispersion of the VAFs.
+**Figure 4** shows the seven tumor samples biopsied from the patient. sample_1 to 3 are from primary tumor and sample_4 to 7 are from the metastasis. Notice the changing dispersion of the VAFs. The primary samples are collected at around 30% purity whereas the metastatic samples were collected during portmortem resulting in a much higher purity of about 90%. If we were to subclonally deconstruct this tumor, the output would look like this:
 
-If we were to subclonally deconstruct this tumor, the output would look like this:
+![](/source/ES.2.jpg){:width="60%" style="display: block; margin: 0 auto"} 
 
-<p align="center" width="100%">
-          <img width="32%" src="https://github.com/Subhayan18/CRUST/tree/gh-pages/source/ES.2.jpg">
-</p>
+But this will be a contentious inference where all variants in the primary samples are predicted to be subclonal and some of them are apparently jumping ship to fixate clonally in the metastatic samples. The analysis went wrong because we did not take into account the varied purity of the samples. *CRUST* can notmalize this VAFs according to their respective purity that result in something like this:
 
-! [](/source/ES.2.jpg){:width="60%" style="display: block; margin: 0 auto"}  
-**Figure 5**
+![](/source/ES.3.jpg){:width="60%" style="display: block; margin: 0 auto"} 
+
+Now if we were to deconvolve this scaled VAFs, we will get a result that is much closer to the truth:
+
+![](/source/ES.4.1.jpg){:width="60%" style="display: block; margin: 0 auto"} 
 
 ## Estimation of allelic composition
 
