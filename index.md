@@ -97,7 +97,7 @@ Now if we were to deconvolve this scaled VAFs, we will get a result that is much
 
 *CRUST* also allows user to re-analyze specific samples based on a brute force suggestion provided by a user. Usually this function would not be needed if allelic compositions are all same for the variants analyzed. But knowing the cost and scope of bulk array sequencing, it is not unconcievable that from time to time allele specific segmental copy number data may not be available to a user. In such cases, if one harbors uncharacteristically strong suspecion that one or more samples are in altered copy number state, the *cluster.doubt* function provided a unique leeway to remeday that by deconvolving said samples according a user defined clustering input.
 
-***Advisory:* We recommend not using this function unless you know exactly what you are doing.
+**Advisory:** We recommend not using this function unless you know exactly what you are doing.
 
 ![](/source/ES.5.1.jpg){:width="60%" style="display: block; margin: 0 auto"}
 
@@ -105,7 +105,12 @@ Now if we were to deconvolve this scaled VAFs, we will get a result that is much
 
 ## Estimation of allelic composition
 
-When the allelic make up (Copynumber data from SNP array) is unavilable to the user, it can be estimated given the sequence reads from the constitutional DNA is also present. This can generally be obtained from a .vcf file before the variant calling.
+We saw how if segmental copynumber data is unavailable to the user the results can be modified to reflect suspected alterations in the copynumber profiles but this can be also rigorously estimated with *CRUST*. If the sequencing summaries (read depth summaries) for the constitutional genome is available, the *AlleleComp* function estimates the segmental copynumber for each sample and each chromosome separately. For this the program first starts by reading in *.vcf* files of a single sample. Multiple samples can also be dynamically read, a small function for this is provided [auxiliary scripts](https://github.com/Subhayan18/CRUST/blob/ver_1.1.0/auxiliary%20scripts/read_vcfs_fromDIR.R) 
+
+At first the reads are corrected for variation in G/C neucleotide content:
+
+![](/source/AC.1.jpg){:width="60%" style="display: block; margin: -1 auto"}
+![](/source/AC.2.jpg){:width="60%" style="display: block; margin: 0 auto"}
 
 ```{r, eval=FALSE, echo=TRUE}
 ## A user provided .vcf file must contain data from one tumor sample
