@@ -67,103 +67,26 @@ res.1 <- cluster.doc(test.dat, sample = 1, vaf = 2,
 ![](/source/test.dat.2.png){:width="60%" style="display: block; margin: 0 auto"}  
 **Figure 2** shows the changes in *Bayesian Information criteria* (BIC) and *Akaike Information criterion* (AIC) estimated based on the number of clusters fitted.
 
-
 ![](/source/test.dat.3.png){:width="60%" style="display: block; margin: 0 auto"}  
 **Figure 3** shows the clustered samples here depict the distribution of clonal and sub-clonal variants.
 
-
 ## Scaling
 
-This data is rather clean and the clusters are more or less obviously identifiable with a visual inspection. But real data tend to be much more noisy and the clonal clusters  are unassumingmore often than not. Let's use the data set from the neuroblastoma patient sample *ES* to see how messy real data can be.
+Quite often the sequencing would not give as clear a picture as is seen here with the hypothetical data. Most likely the tumor samples will have normal cells mixed with the tumor cells, sometimes along with necrotic tissue. This affects the relative proportion of mutants in a sample. To account for changes in VAF due to varying sample purity *CRUST* scales the data whenever estimates of purity is provided.
 
-```{r, eval=FALSE, echo=TRUE}
-es<-read.table("ES_all_2+2.txt",header=T,stringsAsFactors=F)
+Case in point: a paediatric neuroblastoma tumor is sampled seven times over the duration of the disease. At presentation when biopsy was collected, the tumor tissue had a lot of normal cells nearby that were also sampled. Later the disease metastasized which was bipsied with a much higher content of the metastatic cells.
 
-## Let's check the VAF distribution of the samples
-ggplot(es, aes(x=sample, y=mut, col=as.factor(sample))) + geom_point()
-```
+![](/source/ES.1.jpg){:width="60%" style="display: block; margin: 0 auto"}  
+**Figure 4** shows the seven tumor samples biopsied from the patient. sample_1 to 3 are from primary tumor and sample_4 to 7 are from the metastasis. Notice the changing dispersion of the VAFs.
 
-<center>
+If we were to subclonally deconstruct this tumor, the output would look like this:
 
-![VAF distribution for ES](https://github.com/Subhayan18/CloneStrat/blob/master/source/test.dat.4.png)
+<p align="center" width="100%">
+          <img width="32%" src="https://github.com/Subhayan18/CRUST/tree/gh-pages/source/ES.2.jpg">
+</p>
 
-</center>
-
-What happend if we deconvolute this data assuming there are two clones and one subclone?
-
-```{r, eval=FALSE, echo=TRUE}
-res.2 <- cluster.doc(es, sample = 1, vaf = 2, 
-                   optimization.method = 'GMM', clustering.method = 'hkm')
-
-## example user input:
-## What is the suspected chromosomal segmentation profile of the sample: 2 + 2
-## How many clonal VAF clouds do you think are present: 2
-## How many sub-clonal VAF clouds do you think are present: 1
-```
-
-<center>
-
-![Clonal deconvolution for ES](https://github.com/Subhayan18/CloneStrat/blob/master/source/test.dat.5.png)
-
-</center>
-
-As it is evident that the VAF distribution here is quite varied among samples, let's now use *Probabilistic Quotient Normalization* with the *Cancer Cell Fractions* (CCF)
-
-```{r, eval=FALSE, echo=TRUE}
-es.sc<-seqn.scale(es,2,3)
-
-## Let's check the scaled VAF distribution of the samples
-
-ggplot(es.sc, aes(x=sample, y=scaled.vaf, col=as.factor(sample))) + geom_point()
-```
-
-<center>
-
-![VAF distribution for scaled ES](https://github.com/Subhayan18/CloneStrat/blob/master/source/test.dat.6.png)
-
-</center>
-
-This step has pretty much rescaled the VAFs for the samples that had a relatively lower CCFs. Let's try the deconvolution now.
-
-```{r, eval=FALSE, echo=TRUE}
-res.2 <- cluster.doc(es.sc, sample = 1, vaf = 3, 
-                   optimization.method = 'GMM', clustering.method = 'hkm')
-
-## example user input:
-## What is the suspected chromosomal segmentation profile of the sample: 2 + 2
-## How many clonal VAF clouds do you think are present: 2
-## How many sub-clonal VAF clouds do you think are present: 2
-## Would you like to see my suggestion instead? (yes/no): no
-```
-
-<center>
-
-![Clonal deconvolution for scaled ES](https://github.com/Subhayan18/CloneStrat/blob/master/source/test.dat.7.png)
-
-</center>
-
-Can you spot the difference in the subclonal distributions for some of the samples now?
-*Hint*: observe how more data points become clonal after scaling for the first few samples.
-
-Now let us assume we are not very satisfied as how things stand for **sample_6** and **sample_7**. Instead of **2 clonal and 1 sub-clonal clouds** we would rather see **2 clones and 2 subclones** for both samples.
-
-Here's how we can make that happen:
-
-```{r, eval=FALSE, echo=TRUE}
-## Let's have a look at the function we can use for this:
-
-?cluster doubt
-
-## Now to the fitting:
-
-res.3 <- cluster.doubt(res.2,1,3,c("sample_6","sample_7"),c(2,2,2,2))
-```
-
-<center>
-
-![User rectified clonal deconvolution for scaled ES](https://github.com/Subhayan18/CloneStrat/blob/master/source/test.dat.8.png)
-
-</center>
+! [](/source/ES.2.jpg){:width="60%" style="display: block; margin: 0 auto"}  
+**Figure 5**
 
 ## Estimation of allelic composition
 
